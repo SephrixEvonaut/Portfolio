@@ -4,7 +4,7 @@ import { skills } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 
-const categories = ["Frontend", "Backend", "Tools"] as const;
+const categories = ["Frontend", "Backend", "AI / Integrations", "Tools", "Hardware / Systems"] as const;
 
 export default function Skills() {
   return (
@@ -14,7 +14,7 @@ export default function Skills() {
           <SectionHeading label="My Skills" id="skills" />
         </FadeIn>
 
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {categories.map((cat, i) => (
             <FadeIn key={cat} delay={i * 0.1}>
               <div>

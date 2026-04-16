@@ -89,18 +89,37 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Embedded video (vlog) */}
+        {/* Embedded video(s) */}
         <section className="mb-16">
-          <h2 className="mb-4 text-2xl font-bold">Project Vlog</h2>
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-lg">
-            <iframe
-              src={project.videoUrl}
-              title={`${project.title} vlog`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-            />
-          </div>
+          {project.videos && project.videos.length > 0 ? (
+            project.videos.map((video) => (
+              <div key={video.title} className="mb-10">
+                <h2 className="mb-4 text-2xl font-bold">{video.title}</h2>
+                <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-lg">
+                  <iframe
+                    src={video.url}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <h2 className="mb-4 text-2xl font-bold">Project Vlog</h2>
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-lg">
+                <iframe
+                  src={project.videoUrl}
+                  title={`${project.title} vlog`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                />
+              </div>
+            </>
+          )}
         </section>
 
         {/* Blog content */}

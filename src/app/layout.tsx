@@ -10,7 +10,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Tyler McRae — Portfolio",
   description:
-    "Software developer crafting fast, elegant, and user-focused digital experiences.",
+    "Full-stack engineer specializing in real-time systems, AI integrations, and developer tooling. TypeScript and Node.js end to end.",
 };
 
 export default function RootLayout({

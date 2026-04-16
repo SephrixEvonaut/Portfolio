@@ -40,8 +40,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mx-auto mt-6 max-w-xl text-lg text-neutral-600 dark:text-neutral-400"
         >
-          Software developer crafting fast, elegant, and user‑focused digital
-          experiences. I turn complex ideas into clean, performant code.
+          Full-stack engineer specializing in real-time systems, AI integrations, and developer tooling. TypeScript and Node.js end to end. Then when I&apos;m done? I clock out and spend time with my dog and playing games that I love and writing stories that I care for. Hoping my skills fund your needs so they can in turn fund my dreams.
         </motion.p>
 
         <motion.div
