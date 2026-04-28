@@ -58,15 +58,15 @@ export const projects: Project[] = [
     title: "ShipWatch Live",
     tagline: "A GitHub repository monitoring dashboard with real-time alerts and activity tracking.",
     description:
-      "ShipWatch Live is a full-stack developer tool that connects to your GitHub account via OAuth and receives webhook events from your repositories. It surfaces push activity, flags suspicious commits (bug fixes, large pushes, hotfixes), and gives you a live feed of what's happening across all your repos in one place.",
-    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "GitHub API"],
+      "ShipWatch Live is a full-stack developer tool that connects to your GitHub account via a GitHub App and receives webhook events from your repositories. It surfaces push activity, flags suspicious commits (bug fixes, large pushes, hotfixes), and gives you a live feed of what's happening across all your repos in one place.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "GitHub API", "n8n", "Claude API"],
     githubUrl: "https://github.com/SephrixEvonaut/ShipWatchLive",
     liveUrl: "#",
-    videoUrl: "https://www.youtube.com/embed/placeholder",
+    videoUrl: "https://www.youtube.com/embed/gqwdvOVAnVM",
     videos: [
-      { title: "Project Overview", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "AI Review & Auto-Fix Pipeline", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "Dashboard Walkthrough", url: "https://www.youtube.com/embed/placeholder" },
+      { title: "Shipwatch Intro — What It Is & Why It Exists", url: "https://www.youtube.com/embed/gqwdvOVAnVM" },
+      { title: "Shipwatch Tutorial — Setup, Dashboard & AI Review Pipeline", url: "https://www.youtube.com/embed/hfYrpWgz-Ko" },
+      { title: "Shipwatch History — Architecture Decisions & How It Was Built", url: "https://www.youtube.com/embed/CGqgRmKW9hA" },
     ],
     blogContent: `
 ## The Problem
@@ -128,7 +128,7 @@ A Next.js middleware layer runs on every request. It refreshes the Supabase sess
 Two Supabase tables underpin the app:
 
 - **\`webhook_events\`** — \`installation_id\`, \`event_type\`, \`repository\`, \`branch\`, \`commit_count\`, \`payload\` (jsonb), \`created_at\`
-- **\`github_installations\`** — \`installation_id\`, \`account_login\`, \`account_type\`, \`created_at\`
+- **\`github_installations\`** — \`user_id\`, \`installation_id\`, \`account_login\`, \`account_avatar_url\`, \`repositories\` (jsonb), \`updated_at\`
 
 Row Level Security is enabled on both tables so users only see data tied to their own GitHub App installation.
 
