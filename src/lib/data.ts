@@ -49,6 +49,7 @@ export interface Project {
   liveUrl: string;
   videoUrl: string;
   videos?: { title: string; url: string }[];
+  introVideoId: string | null;
   blogContent: string;
 }
 
@@ -63,6 +64,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/SephrixEvonaut/ShipWatchLive",
     liveUrl: "#",
     videoUrl: "https://www.youtube.com/embed/gqwdvOVAnVM",
+    introVideoId: "gqwdvOVAnVM",
     videos: [
       { title: "Shipwatch Intro — What It Is & Why It Exists", url: "https://www.youtube.com/embed/gqwdvOVAnVM" },
       { title: "Shipwatch Tutorial — Setup, Dashboard & AI Review Pipeline", url: "https://www.youtube.com/embed/hfYrpWgz-Ko" },
@@ -151,6 +153,7 @@ The GitHub App authentication model is meaningfully different from plain OAuth a
     githubUrl: "https://github.com/SephrixEvonaut/Gesturekit",
     liveUrl: "#",
     videoUrl: "https://www.youtube.com/embed/placeholder",
+    introVideoId: null,
     videos: [
       { title: "Project Overview", url: "https://www.youtube.com/embed/placeholder" },
       { title: "Dashboard Walkthrough", url: "https://www.youtube.com/embed/placeholder" },
@@ -327,6 +330,7 @@ As for the future, I brought up Svalboards and Azeron Cyborgs as devices that al
     githubUrl: "https://github.com/SephrixEvonaut/AGENT_SUPPORT",
     liveUrl: "#",
     videoUrl: "https://www.youtube.com/embed/placeholder",
+    introVideoId: null,
     videos: [
       { title: "Project Overview", url: "https://www.youtube.com/embed/placeholder" },
       { title: "Omega Profiles & GCD Manager", url: "https://www.youtube.com/embed/placeholder" },
@@ -430,6 +434,7 @@ At load time, the profile compiler performs a pass over all bindings and identif
     githubUrl: "https://github.com/SephrixEvonaut/Fence_For_Hire",
     liveUrl: "#",
     videoUrl: "https://www.youtube.com/embed/placeholder",
+    introVideoId: null,
     videos: [
       { title: "Site Walkthrough", url: "https://www.youtube.com/embed/placeholder" },
       { title: "Responsive Layout & Navigation", url: "https://www.youtube.com/embed/placeholder" },
@@ -489,6 +494,7 @@ Building within a client's brand constraints is a different muscle than building
     githubUrl: "https://github.com/SephrixEvonaut/se_project_react",
     liveUrl: "https://sephrixevonaut.github.io/se_project_react/",
     videoUrl: "https://www.youtube.com/embed/5yZC2Jhgyh8",
+    introVideoId: "5yZC2Jhgyh8",
     videos: [
       { title: "Project Overview", url: "https://www.youtube.com/embed/5yZC2Jhgyh8" },
       { title: "Weather Integration & Filtering", url: "https://www.youtube.com/embed/placeholder" },

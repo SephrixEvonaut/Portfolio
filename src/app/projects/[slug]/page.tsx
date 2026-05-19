@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
+import IntroVideoGate from "@/components/IntroVideoGate";
 import type { Metadata } from "next";
 
 interface PageProps {
@@ -41,6 +42,10 @@ export default async function ProjectPage({ params }: PageProps) {
             Back to Projects
           </Link>
           <div className="flex items-center gap-4">
+            <IntroVideoGate
+              youtubeId={project.introVideoId}
+              projectTitle={project.title}
+            />
             <a
               href={project.githubUrl}
               target="_blank"
