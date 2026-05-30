@@ -1,7 +1,6 @@
 "use client";
 
 import { projects } from "@/lib/data";
-import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "./icons";
@@ -22,7 +21,10 @@ export default function Projects() {
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative mx-auto max-w-5xl">
         <FadeIn>
-          <SectionHeading label="My Projects" id="projects" />
+          <div id="projects" className="scroll-mt-24 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Projects</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-blue-500" />
+          </div>
         </FadeIn>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

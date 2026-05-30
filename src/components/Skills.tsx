@@ -3,11 +3,14 @@
 import { skills } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
+import NapoleonModal from "./NapoleonModal";
 
 const categories = ["Frontend", "Backend", "AI / Integrations", "Tools", "Hardware / Systems"] as const;
 
 export default function Skills() {
   return (
+    <>
+    <NapoleonModal />
     <section className="py-24 px-6 bg-neutral-50 dark:bg-neutral-900/50">
       <div className="mx-auto max-w-4xl">
         <FadeIn>
@@ -39,5 +42,6 @@ export default function Skills() {
         </div>
       </div>
     </section>
+    </>
   );
 }
