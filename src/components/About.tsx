@@ -1,21 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 
 export default function About() {
   return (
-    <section className="py-32 px-6">
-      <div className="mx-auto max-w-5xl">
+    <section
+      className="relative py-32 px-6 overflow-hidden"
+      style={{
+        backgroundImage: "url('/about-projects-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="relative mx-auto max-w-5xl">
         <FadeIn>
-          <SectionHeading label="About Me" id="about" />
+          <div id="about" className="scroll-mt-24 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">About Me</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-emerald-500" />
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <div className="grid gap-10 md:grid-cols-[1fr_2fr] items-start">
             {/* Profile photo */}
-            <div className="mx-auto w-60 h-60 rounded-2xl overflow-hidden shadow-lg shrink-0">
+            <div className="mx-auto w-60 h-60 rounded-2xl overflow-hidden shadow-lg ring-1 ring-white/20 shrink-0">
               <Image
                 src="/portfolio_PFP.jpg"
                 alt="Tyler McRae"
@@ -25,7 +36,7 @@ export default function About() {
               />
             </div>
 
-            <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <div className="space-y-4 text-neutral-300 leading-relaxed">
               <p>
                 I&apos;m a self-taught full-stack engineer who builds real-time systems, AI-powered pipelines, and developer tools in TypeScript and Node.js. My projects span the full vertical, from kernel-level USB HID input handling and hardware integration all the way up to webhook-driven SaaS dashboards with AI commit analysis. I learn by shipping, and I ship by solving problems I actually have.
               </p>
