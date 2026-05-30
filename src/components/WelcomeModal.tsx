@@ -1,20 +1,76 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
-interface NavTarget {
-  x: number;
-  y: number;
+const navItems = [
+  {
+    label: "ShipWatch Live",
+    href: "/projects/shipwatch-live",
+    bullets: [
+      "Agentic workflow",
+      "GitHub interactive integration",
+      "Extensive LLM parameters",
+    ],
+  },
+  {
+    label: "GestureKit",
+    href: "/projects/gesturekit",
+    bullets: [
+      "Event-driven state machine design",
+      "Data-driven pipeline + parameterization",
+      "Full-stack local application (Electron app)",
+    ],
+  },
+];
+
+function NavPill({ label, href, bullets }: typeof navItems[0]) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="relative" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <Link
+        href={href}
+        className="flex items-center gap-1.5 rounded-full border border-indigo-400/50 bg-indigo-500/15 px-4 py-1.5 text-sm font-semibold transition hover:border-indigo-400/80 hover:bg-indigo-500/25"
+      >
+        <span className="relative flex h-1.5 w-1.5 shrink-0">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-60" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo-400" />
+        </span>
+        <span className="nav-featured-text">{label}</span>
+      </Link>
+
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-56 rounded-lg bg-neutral-700 border border-white/10 shadow-xl px-4 py-3 z-10"
+          >
+            <ul className="space-y-1.5">
+              {bullets.map((b) => (
+                <li key={b} className="flex items-start gap-2 text-xs text-white leading-snug">
+                  <span className="mt-0.5 text-indigo-300">•</span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            {/* Tooltip arrow */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-neutral-700" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default function WelcomeModal() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [swTarget, setSwTarget] = useState<NavTarget | null>(null);
-  const [gkTarget, setGkTarget] = useState<NavTarget | null>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -23,24 +79,6 @@ export default function WelcomeModal() {
       setOpen(true);
     }
   }, []);
-
-  // Measure nav pill positions after modal opens
-  useEffect(() => {
-    if (!open) return;
-    const timer = setTimeout(() => {
-      const sw = document.getElementById("nav-shipwatch");
-      const gk = document.getElementById("nav-gesturekit");
-      if (sw) {
-        const r = sw.getBoundingClientRect();
-        setSwTarget({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
-      }
-      if (gk) {
-        const r = gk.getBoundingClientRect();
-        setGkTarget({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
-      }
-    }, 150);
-    return () => clearTimeout(timer);
-  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -55,13 +93,6 @@ export default function WelcomeModal() {
 
   if (!mounted) return null;
 
-  // Arrow start: center-top of modal (approximated — modal is centered)
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 2;
-  // Start points fan out slightly left/right from modal top-center
-  const swStart = { x: cx - 80, y: cy - 160 };
-  const gkStart = { x: cx + 80, y: cy - 160 };
-
   return createPortal(
     <AnimatePresence>
       {open && (
@@ -71,30 +102,34 @@ export default function WelcomeModal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/75 backdrop-blur-sm"
+            className="fixed inset-0 z-9990 bg-black/75 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
 
           {/* Modal */}
           <motion.div
-            ref={modalRef}
             initial={{ opacity: 0, scale: 0.9, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 24 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
-            className="fixed z-[9991] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-sm rounded-2xl border border-white/15 bg-neutral-950/95 shadow-2xl overflow-hidden"
+            className="fixed z-9991 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-sm rounded-2xl border border-white/15 bg-neutral-950/95 shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src="/welcome.gif"
-              alt="Welcome"
-              className="w-full block"
-            />
+            <img src="/welcome.gif" alt="Welcome" className="w-full block" />
+
             <div className="px-6 py-5 text-center">
               <p className="text-neutral-200 text-[16.8px] leading-relaxed">
                 Recruiter? Someone who wants the quickest click to my work to decide whether or not they want me?{" "}
                 <span className="text-indigo-300 font-semibold">Follow the arrows.</span>
               </p>
+
+              {/* Nav pills with tooltips */}
+              <div className="mt-5 flex items-center justify-center gap-4">
+                {navItems.map((item) => (
+                  <NavPill key={item.href} {...item} />
+                ))}
+              </div>
+
               <button
                 onClick={() => setOpen(false)}
                 className="mt-4 text-xs text-neutral-500 hover:text-neutral-300 transition-colors"
@@ -103,57 +138,6 @@ export default function WelcomeModal() {
               </button>
             </div>
           </motion.div>
-
-          {/* Animated SVG arrows pointing to nav items */}
-          {(swTarget || gkTarget) && (
-            <svg
-              className="fixed inset-0 pointer-events-none"
-              style={{ zIndex: 9992, width: "100vw", height: "100vh" }}
-            >
-              <defs>
-                <marker id="arrow-head-sw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#818cf8" />
-                </marker>
-                <marker id="arrow-head-gk" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#818cf8" />
-                </marker>
-              </defs>
-
-              {/* ShipWatch Live arrow */}
-              {swTarget && (
-                <motion.line
-                  x1={swStart.x}
-                  y1={swStart.y}
-                  x2={swTarget.x}
-                  y2={swTarget.y}
-                  stroke="#818cf8"
-                  strokeWidth="2.5"
-                  strokeDasharray="10 5"
-                  markerEnd="url(#arrow-head-sw)"
-                  strokeLinecap="round"
-                  animate={{ strokeDashoffset: [30, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.7, ease: "linear" }}
-                />
-              )}
-
-              {/* GestureKit arrow */}
-              {gkTarget && (
-                <motion.line
-                  x1={gkStart.x}
-                  y1={gkStart.y}
-                  x2={gkTarget.x}
-                  y2={gkTarget.y}
-                  stroke="#818cf8"
-                  strokeWidth="2.5"
-                  strokeDasharray="10 5"
-                  markerEnd="url(#arrow-head-gk)"
-                  strokeLinecap="round"
-                  animate={{ strokeDashoffset: [30, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.7, ease: "linear", delay: 0.15 }}
-                />
-              )}
-            </svg>
-          )}
         </>
       )}
     </AnimatePresence>,
