@@ -34,6 +34,7 @@ export default function Hero() {
           style={{
             backgroundImage: `url(${src})`,
             opacity: i === current ? 1 : 0,
+            ...(i === 0 && { inset: "-10%", transform: "scale(0.85)" }),
           }}
         />
       ))}
