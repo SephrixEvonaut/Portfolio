@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 const heroImages = [
-  "/hero-1.jpg",
   "/hero-2.jpg",
   "/hero-3.jpg",
   "/hero-4.jpg",
@@ -34,7 +33,6 @@ export default function Hero() {
           style={{
             backgroundImage: `url(${src})`,
             opacity: i === current ? 1 : 0,
-            ...(i === 0 && { inset: "-10%", transform: "scale(0.85)" }),
           }}
         />
       ))}
