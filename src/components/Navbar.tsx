@@ -24,6 +24,8 @@ export default function Navbar() {
         backgroundImage: "url('/nav-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center 40%",
+        borderBottom: "1px solid rgba(255,255,255,0.45)",
+        boxShadow: "0 4px 32px rgba(255,255,255,0.35), 0 1px 0 rgba(255,255,255,0.6)",
       }}
     >
       {/* Dark overlay to keep text legible against the texture */}
