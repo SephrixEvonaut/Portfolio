@@ -1,20 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { navLinks } from "@/lib/data";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleAnchorClick = (href: string) => {
     setMobileOpen(false);
@@ -26,20 +19,24 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-lg shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 shadow-lg"
+      style={{
+        backgroundImage: "url('/nav-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center 40%",
+      }}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      {/* Dark overlay to keep text legible against the texture */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             handleAnchorClick("#hero");
           }}
-          className="text-lg font-bold tracking-tight"
+          className="text-lg font-bold tracking-tight text-white"
         >
           Tyler McRae
         </a>
@@ -80,7 +77,7 @@ export default function Navbar() {
                     e.preventDefault();
                     handleAnchorClick(link.href);
                   }}
-                  className="relative text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all hover:after:w-full"
+                  className="relative text-neutral-200 hover:text-white transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all hover:after:w-full"
                 >
                   {link.label}
                 </a>
@@ -91,7 +88,7 @@ export default function Navbar() {
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -106,9 +103,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 dark:bg-neutral-950/95 backdrop-blur-lg border-t border-neutral-200 dark:border-neutral-800"
+            className="relative md:hidden border-t border-white/10"
+            style={{
+              backgroundImage: "url('/nav-bg.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center 60%",
+            }}
           >
-            <ul className="flex flex-col gap-1 px-6 py-4">
+            <div className="absolute inset-0 bg-black/60" />
+            <ul className="relative flex flex-col gap-1 px-6 py-4">
               {navLinks.map((link) =>
                 link.featured ? (
                   <li key={link.href}>
@@ -132,7 +135,7 @@ export default function Navbar() {
                         e.preventDefault();
                         handleAnchorClick(link.href);
                       }}
-                      className="block py-2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                      className="block py-2 text-neutral-300 hover:text-white transition-colors"
                     >
                       {link.label}
                     </a>
