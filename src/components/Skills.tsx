@@ -2,14 +2,11 @@
 
 import { skills } from "@/lib/data";
 import FadeIn from "./FadeIn";
-import NapoleonModal from "./NapoleonModal";
 
 const categories = ["Frontend", "Backend", "AI / Integrations", "Tools", "Hardware / Systems"] as const;
 
 export default function Skills() {
   return (
-    <>
-    <NapoleonModal />
     <section
       className="relative py-24 px-6 overflow-hidden"
       style={{
@@ -22,7 +19,14 @@ export default function Skills() {
       <div className="absolute inset-0 bg-black/45" />
       <div className="relative mx-auto max-w-4xl">
         <FadeIn>
-          <div id="skills" className="scroll-mt-24 mb-12 text-center">
+          <div id="skills" className="scroll-mt-24 mb-12 text-center relative">
+            {/* GIF — desktop only, absolutely anchored to the right so heading stays centered */}
+            <img
+              src="/napoleon.gif"
+              alt=""
+              aria-hidden="true"
+              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-48 rounded-xl opacity-90 shadow-lg"
+            />
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Skills</h2>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-red-600" />
           </div>
@@ -53,6 +57,5 @@ export default function Skills() {
         </div>
       </div>
     </section>
-    </>
   );
 }
