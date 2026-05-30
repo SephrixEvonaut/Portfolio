@@ -9,8 +9,18 @@ import Link from "next/link";
 
 export default function Projects() {
   return (
-    <section className="py-24 px-6">
-      <div className="mx-auto max-w-5xl">
+    <section
+      className="relative py-24 px-6 overflow-hidden"
+      style={{
+        backgroundImage: "url('/site-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Dark overlay so cards remain legible */}
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="relative mx-auto max-w-5xl">
         <FadeIn>
           <SectionHeading label="My Projects" id="projects" />
         </FadeIn>
