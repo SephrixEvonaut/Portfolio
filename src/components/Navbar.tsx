@@ -47,7 +47,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) =>
             link.featured ? (
-              <li key={link.href}>
+              <li key={link.href} id={link.label === "ShipWatch Live" ? "nav-shipwatch" : link.label === "GestureKit" ? "nav-gesturekit" : undefined}>
                 <motion.div
                   animate={{
                     boxShadow: [
