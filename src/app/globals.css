@@ -13,3 +13,17 @@ html {
   background-color: #3b82f6;
   color: #fff;
 }
+
+@keyframes nav-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.nav-featured-text {
+  background: linear-gradient(90deg, #93c5fd, #a78bfa, #67e8f9, #93c5fd);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nav-shimmer 3.5s linear infinite;
+}

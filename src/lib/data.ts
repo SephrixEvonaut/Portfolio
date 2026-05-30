@@ -1,5 +1,7 @@
 export const navLinks = [
   { label: "Home", href: "#hero" },
+  { label: "ShipWatch Live", href: "/projects/shipwatch-live", featured: true },
+  { label: "GestureKit", href: "/projects/gesturekit", featured: true },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
