@@ -155,9 +155,9 @@ The GitHub App authentication model is meaningfully different from plain OAuth a
     githubUrl: "https://github.com/SephrixEvonaut/Gesturekit",
     liveUrl: "#",
     videoUrl: "https://www.youtube.com/embed/placeholder",
-    introVideoId: null,
+    introVideoId: "88Zfz6P0n30",
     videos: [
-      { title: "Project Overview", url: "https://www.youtube.com/embed/placeholder" },
+      { title: "Project Overview", url: "https://www.youtube.com/embed/88Zfz6P0n30?rel=0&modestbranding=1" },
       { title: "Dashboard Walkthrough", url: "https://www.youtube.com/embed/placeholder" },
       { title: "Gesture Detection Deep Dive", url: "https://www.youtube.com/embed/placeholder" },
     ],
