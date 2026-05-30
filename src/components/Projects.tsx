@@ -2,7 +2,6 @@
 
 import { projects } from "@/lib/data";
 import FadeIn from "./FadeIn";
-import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "./icons";
 import Link from "next/link";
 
@@ -61,15 +60,6 @@ export default function Projects() {
                   >
                     <GithubIcon size={16} />
                     Code
-                  </a>
-                  <a
-                    href={p.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400 hover:text-blue-500 transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                    Live
                   </a>
                   <Link
                     href={`/projects/${p.slug}`}
