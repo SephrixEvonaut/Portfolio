@@ -71,7 +71,7 @@ export default function WelcomeModal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9990] bg-black/75 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/75 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
 
@@ -91,8 +91,8 @@ export default function WelcomeModal() {
               className="w-full block"
             />
             <div className="px-6 py-5 text-center">
-              <p className="text-neutral-200 text-sm leading-relaxed">
-                Recruiter? Someone who wants the clickest click to my work to decide whether or not they want me?{" "}
+              <p className="text-neutral-200 text-[16.8px] leading-relaxed">
+                Recruiter? Someone who wants the quickest click to my work to decide whether or not they want me?{" "}
                 <span className="text-indigo-300 font-semibold">Follow the arrows.</span>
               </p>
               <button
