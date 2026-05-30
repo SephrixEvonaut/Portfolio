@@ -1,6 +1,5 @@
 "use client";
 
-import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 import { Copy, Check, Download, FileText, Mail, Phone } from "lucide-react";
 import { useState } from "react";
@@ -17,15 +16,27 @@ export default function Resume() {
   }
 
   return (
-    <section className="py-24 px-6 bg-neutral-50 dark:bg-neutral-900/50">
-      <div className="mx-auto max-w-4xl">
+    <section
+      className="relative py-24 px-6 overflow-hidden"
+      style={{
+        backgroundImage: "url('/resume-contact-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative mx-auto max-w-4xl">
         <FadeIn>
-          <SectionHeading label="Resume" id="resume" />
+          <div id="resume" className="scroll-mt-24 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Resume</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-purple-500" />
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <div className="flex flex-col items-center text-center">
-            <p className="max-w-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+            <p className="max-w-lg text-neutral-300 leading-relaxed mb-8">
               Interested in working together? Download my resume or get in touch through any of
               the channels below.
             </p>
@@ -35,7 +46,7 @@ export default function Resume() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700"
+                className="flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-500"
               >
                 <FileText size={16} />
                 View Resume
@@ -43,7 +54,7 @@ export default function Resume() {
               <a
                 href="/resume.pdf"
                 download
-                className="flex items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700 px-6 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 <Download size={16} />
                 Download PDF
@@ -55,37 +66,37 @@ export default function Resume() {
         {/* Contact / Social */}
         <FadeIn delay={0.2}>
           <div id="contact" className="scroll-mt-24">
-            <h3 className="text-center text-sm font-semibold uppercase tracking-widest text-blue-500 mb-6">
+            <h3 className="text-center text-sm font-semibold uppercase tracking-widest text-purple-400 mb-6">
               Get In Touch
             </h3>
 
             <div className="grid gap-4 sm:grid-cols-2 max-w-lg mx-auto">
               <a
                 href="mailto:tylermcrae480@gmail.com?subject=Let's%20Work%20Together"
-                className="relative flex items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-5 py-4 transition hover:border-blue-400/50 hover:shadow-md"
+                className="relative flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm px-5 py-4 transition hover:border-purple-400/50 hover:bg-white/15"
               >
-                <Mail size={20} className="text-blue-500 shrink-0" />
+                <Mail size={20} className="text-blue-400 shrink-0" />
                 <div>
-                  <p className="text-xs text-neutral-500">Email</p>
-                  <p className="text-sm font-medium">{socialLinks.email}</p>
+                  <p className="text-xs text-neutral-400">Email</p>
+                  <p className="text-sm font-medium text-white">{socialLinks.email}</p>
                 </div>
                 <button
                   onClick={(e) => { e.preventDefault(); e.stopPropagation(); copyEmail(); }}
-                  className="absolute top-2 right-2 p-1 rounded text-neutral-400 hover:text-blue-500 transition-colors"
+                  className="absolute top-2 right-2 p-1 rounded text-neutral-400 hover:text-purple-400 transition-colors"
                   aria-label="Copy email"
                 >
-                  {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                  {copied ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
                 </button>
               </a>
 
               <a
                 href={`tel:${socialLinks.phone}`}
-                className="flex items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-5 py-4 transition hover:border-blue-400/50 hover:shadow-md"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm px-5 py-4 transition hover:border-purple-400/50 hover:bg-white/15"
               >
-                <Phone size={20} className="text-blue-500 shrink-0" />
+                <Phone size={20} className="text-blue-400 shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-xs text-neutral-500">Phone</p>
-                  <p className="text-sm font-medium">{socialLinks.phone}</p>
+                  <p className="text-xs text-neutral-400">Phone</p>
+                  <p className="text-sm font-medium text-white">{socialLinks.phone}</p>
                 </div>
               </a>
 
@@ -93,12 +104,12 @@ export default function Resume() {
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-5 py-4 transition hover:border-blue-400/50 hover:shadow-md"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm px-5 py-4 transition hover:border-purple-400/50 hover:bg-white/15"
               >
-                <LinkedinIcon size={20} className="text-blue-500 shrink-0" />
+                <LinkedinIcon size={20} className="text-blue-400 shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-xs text-neutral-500">LinkedIn</p>
-                  <p className="text-sm font-medium">Tyler McRae</p>
+                  <p className="text-xs text-neutral-400">LinkedIn</p>
+                  <p className="text-sm font-medium text-white">Tyler McRae</p>
                 </div>
               </a>
 
@@ -106,12 +117,12 @@ export default function Resume() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-5 py-4 transition hover:border-blue-400/50 hover:shadow-md"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm px-5 py-4 transition hover:border-purple-400/50 hover:bg-white/15"
               >
-                <GithubIcon size={20} className="text-blue-500 shrink-0" />
+                <GithubIcon size={20} className="text-blue-400 shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-xs text-neutral-500">GitHub</p>
-                  <p className="text-sm font-medium">@SephrixEvonaut</p>
+                  <p className="text-xs text-neutral-400">GitHub</p>
+                  <p className="text-sm font-medium text-white">@SephrixEvonaut</p>
                 </div>
               </a>
             </div>
