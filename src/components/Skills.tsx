@@ -1,7 +1,6 @@
 "use client";
 
 import { skills } from "@/lib/data";
-import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 import NapoleonModal from "./NapoleonModal";
 
@@ -11,17 +10,29 @@ export default function Skills() {
   return (
     <>
     <NapoleonModal />
-    <section className="py-24 px-6 bg-neutral-50 dark:bg-neutral-900/50">
-      <div className="mx-auto max-w-4xl">
+    <section
+      className="relative py-24 px-6 overflow-hidden"
+      style={{
+        backgroundImage: "url('/skills-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/45" />
+      <div className="relative mx-auto max-w-4xl">
         <FadeIn>
-          <SectionHeading label="My Skills" id="skills" />
+          <div id="skills" className="scroll-mt-24 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Skills</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-red-600" />
+          </div>
         </FadeIn>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {categories.map((cat, i) => (
             <FadeIn key={cat} delay={i * 0.1}>
               <div>
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-blue-500">
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-red-400">
                   {cat}
                 </h3>
                 <ul className="flex flex-wrap gap-2">
@@ -30,7 +41,7 @@ export default function Skills() {
                     .map((s) => (
                       <li
                         key={s.name}
-                        className="rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-1.5 text-sm font-medium transition hover:border-blue-400 hover:text-blue-500"
+                        className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-neutral-200 transition hover:border-red-400/60 hover:text-red-300"
                       >
                         {s.name}
                       </li>
