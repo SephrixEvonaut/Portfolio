@@ -25,7 +25,7 @@ export default function Skills() {
               src="/napoleon.gif"
               alt=""
               aria-hidden="true"
-              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-48 rounded-xl opacity-90 shadow-lg"
+              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-69.5 rounded-xl opacity-90 shadow-lg"
             />
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Skills</h2>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-red-600" />
