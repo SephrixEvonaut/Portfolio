@@ -1,11 +1,31 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { projects } from "@/lib/data";
 import FadeIn from "./FadeIn";
 import { GithubIcon } from "./icons";
 import Link from "next/link";
+import ProjectPreview from "./ProjectPreview";
 
 export default function Projects() {
+  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+  const [anchorRect, setAnchorRect] = useState<DOMRect | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function handleEnter(slug: string, e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    timerRef.current = setTimeout(() => {
+      setAnchorRect(rect);
+      setHoveredSlug(slug);
+    }, 300);
+  }
+
+  function handleLeave() {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setHoveredSlug(null);
+    setAnchorRect(null);
+  }
+
   return (
     <section
       className="relative py-24 px-6 overflow-hidden"
@@ -29,7 +49,11 @@ export default function Projects() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <FadeIn key={p.slug} delay={i * 0.1}>
-              <div className="group flex flex-col rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-sm transition hover:shadow-lg hover:border-blue-400/50 h-full">
+              <div
+                className="group flex flex-col rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-sm transition hover:shadow-lg hover:border-blue-400/50 h-full cursor-default"
+                onMouseEnter={(e) => handleEnter(p.slug, e)}
+                onMouseLeave={handleLeave}
+              >
                 {/* Colored bar */}
                 <div className="mb-4 h-1.5 w-12 rounded-full bg-linear-to-r from-blue-500 to-purple-500" />
 
@@ -73,6 +97,10 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {hoveredSlug && anchorRect && (
+        <ProjectPreview slug={hoveredSlug} anchorRect={anchorRect} />
+      )}
     </section>
   );
 }
