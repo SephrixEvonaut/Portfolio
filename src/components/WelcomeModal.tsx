@@ -119,7 +119,7 @@ export default function WelcomeModal() {
 
             <div className="px-6 py-5 text-center">
               <p className="text-neutral-200 text-[16.8px] leading-relaxed">
-                Recruiter? Someone who wants the quickest click to my work to decide whether or not they want me?{" "}
+                Recruiter? Someone who wants the quickest click to my merit?{" "}
                 <span className="text-indigo-300 font-semibold">Follow these links.</span>
               </p>
 
