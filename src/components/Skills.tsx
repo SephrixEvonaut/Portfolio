@@ -19,16 +19,21 @@ export default function Skills() {
       <div className="absolute inset-0 bg-black/45" />
       <div className="relative mx-auto max-w-4xl">
         <FadeIn>
-          <div id="skills" className="scroll-mt-24 mb-12 text-center relative">
-            {/* GIF — desktop only, absolutely anchored to the right so heading stays centered */}
+          <div
+            id="skills"
+            className="scroll-mt-24 mb-12 relative flex items-center justify-center md:min-h-50 lg:min-h-67.5"
+          >
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Skills</h2>
+              <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-red-600" />
+            </div>
+            {/* GIF — desktop only, absolutely anchored top-right, contained within min-h wrapper */}
             <img
               src="/napoleon.gif"
               alt=""
               aria-hidden="true"
-              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[30vw] lg:w-87.5 rounded-xl opacity-90 shadow-lg"
+              className="hidden md:block absolute top-0 right-0 w-[30vw] lg:w-87.5 rounded-xl opacity-90 shadow-lg"
             />
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">My Skills</h2>
-            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-red-600" />
           </div>
         </FadeIn>
 
