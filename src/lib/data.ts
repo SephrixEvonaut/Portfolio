@@ -64,7 +64,7 @@ export const projects: Project[] = [
       "ShipWatch Live is a full-stack developer tool that connects to your GitHub account via a GitHub App and receives webhook events from your repositories. It surfaces push activity, flags suspicious commits (bug fixes, large pushes, hotfixes), and gives you a live feed of what's happening across all your repos in one place.",
     technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "GitHub API", "n8n", "Claude API"],
     githubUrl: "https://github.com/SephrixEvonaut/ShipWatchLive",
-    liveUrl: "#",
+    liveUrl: "https://ship-watch-live.vercel.app/",
     videoUrl: "https://www.youtube.com/embed/gqwdvOVAnVM",
     introVideoId: "gqwdvOVAnVM",
     videos: [

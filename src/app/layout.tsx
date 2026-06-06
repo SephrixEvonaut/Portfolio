@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title: "Tyler McRae — Portfolio",
   description:
     "Full-stack engineer specializing in real-time systems, AI integrations, and developer tooling. TypeScript and Node.js end to end.",
+  icons: {
+    icon: "/site-icon.png",
+    apple: "/site-icon.png",
+  },
 };
 
 export default function RootLayout({
