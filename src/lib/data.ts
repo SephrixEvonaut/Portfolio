@@ -158,8 +158,8 @@ The GitHub App authentication model is meaningfully different from plain OAuth a
     introVideoId: "88Zfz6P0n30",
     videos: [
       { title: "Project Overview", url: "https://www.youtube.com/embed/88Zfz6P0n30?rel=0&modestbranding=1" },
-      { title: "Dashboard Walkthrough", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "Gesture Detection Deep Dive", url: "https://www.youtube.com/embed/placeholder" },
+      { title: "Dashboard Walkthrough", url: "https://www.youtube.com/embed/Z4wTHVQWCxY" },
+      { title: "Gesture Detection Deep Dive", url: "https://www.youtube.com/embed/kt4DXEnktlU" },
     ],
     blogContent: `
 ## Disclaimer
@@ -334,9 +334,8 @@ As for the future, I brought up Svalboards and Azeron Cyborgs as devices that al
     videoUrl: "https://www.youtube.com/embed/placeholder",
     introVideoId: null,
     videos: [
-      { title: "Project Overview", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "Omega Profiles & GCD Manager", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "Calibration System Deep Dive", url: "https://www.youtube.com/embed/placeholder" },
+      { title: "Project Overview", url: "https://www.youtube.com/embed/yW3GZefL1NQ" },
+      { title: "Omega Profiles & GCD Manager", url: "https://www.youtube.com/embed/GPkLXZS-zXs" },
     ],
     blogContent: `
 ## Context
@@ -495,12 +494,11 @@ Building within a client's brand constraints is a different muscle than building
     technologies: ["React", "React Router", "Vite", "OpenWeatherMap API", "ESLint"],
     githubUrl: "https://github.com/SephrixEvonaut/se_project_react",
     liveUrl: "https://sephrixevonaut.github.io/se_project_react/",
-    videoUrl: "https://www.youtube.com/embed/5yZC2Jhgyh8",
-    introVideoId: "5yZC2Jhgyh8",
+    videoUrl: "https://www.youtube.com/embed/Mtks4aaG8mk",
+    introVideoId: "Mtks4aaG8mk",
     videos: [
-      { title: "Project Overview", url: "https://www.youtube.com/embed/5yZC2Jhgyh8" },
-      { title: "Weather Integration & Filtering", url: "https://www.youtube.com/embed/placeholder" },
-      { title: "Adding & Managing Clothing Items", url: "https://www.youtube.com/embed/placeholder" },
+      { title: "Project Overview", url: "https://www.youtube.com/embed/Mtks4aaG8mk" },
+      { title: "Weather API & Clothes Database", url: "https://www.youtube.com/embed/5yZC2Jhgyh8" },
     ],
     blogContent: `
 ## The Idea
