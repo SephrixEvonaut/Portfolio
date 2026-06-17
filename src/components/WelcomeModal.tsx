@@ -112,7 +112,7 @@ export default function WelcomeModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 24 }}
             transition={{ type: "spring", stiffness: 260, damping: 22 }}
-            className="fixed z-9991 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-sm rounded-2xl border border-white/15 bg-neutral-950/95 shadow-2xl overflow-hidden"
+            className="fixed z-9991 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-sm md:max-w-[538px] rounded-2xl border border-white/15 bg-neutral-950/95 shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <img src="/welcome.gif" alt="Welcome" className="w-full block" />
