@@ -4,18 +4,23 @@ import { useRef, useState } from "react";
 import { skills } from "@/lib/data";
 import FadeIn from "./FadeIn";
 import SkillVideoPreview from "./SkillVideoPreview";
+import NoVideoTooltip from "./NoVideoTooltip";
 
 const categories = ["Frontend", "Backend", "AI / Integrations", "Tools", "Hardware / Systems"] as const;
 
 export default function Skills() {
   const [activeSkill, setActiveSkill] = useState<{ name: string; src: string; rect: DOMRect } | null>(null);
+  const [noVideoAnchor, setNoVideoAnchor] = useState<{ rect: DOMRect } | null>(null);
   const showTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function handlePillEnter(skill: typeof skills[0], e: React.MouseEvent<HTMLLIElement>) {
-    if (!skill.videoUrl) return;
-    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     const rect = e.currentTarget.getBoundingClientRect();
+    if (!skill.videoUrl) {
+      setNoVideoAnchor({ rect });
+      return;
+    }
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     showTimerRef.current = setTimeout(() => {
       setActiveSkill({ name: skill.name, src: skill.videoUrl!, rect });
     }, 250);
@@ -23,6 +28,7 @@ export default function Skills() {
 
   function handlePillLeave() {
     if (showTimerRef.current) clearTimeout(showTimerRef.current);
+    setNoVideoAnchor(null);
     hideTimerRef.current = setTimeout(() => setActiveSkill(null), 180);
   }
 
@@ -97,6 +103,7 @@ export default function Skills() {
           onMouseLeave={() => setActiveSkill(null)}
         />
       )}
+      {noVideoAnchor && <NoVideoTooltip anchorRect={noVideoAnchor.rect} />}
     </section>
   );
 }

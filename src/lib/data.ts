@@ -12,8 +12,8 @@ export const navLinks = [
 export const skills = [
   { name: "JavaScript",            category: "Frontend"           },
   { name: "TypeScript",            category: "Frontend"           },
-  { name: "React",                 category: "Frontend"           },
-  { name: "Next.js",               category: "Frontend"           },
+  { name: "React",                 category: "Frontend",           videoUrl: "/skill-videos/react.mp4" },
+  { name: "Next.js",               category: "Frontend",           videoUrl: "/skill-videos/nextjs.mp4" },
   { name: "HTML / CSS",            category: "Frontend"           },
   { name: "Tailwind CSS",          category: "Frontend"           },
   { name: "Vite",                  category: "Frontend",           videoUrl: "/skill-videos/vite.mp4" },
